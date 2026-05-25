@@ -425,11 +425,11 @@ class Map {
             await this.mapAppendMonuments();
         }
 
-        await this.mapMarkerImageMeta.map.jimp.writeAsync(
-            this.mapMarkerImageMeta.map.image.replace('clean.png', 'full.png'));
+        await this.mapMarkerImageMeta.map.jimp.quality(80).writeAsync(
+            this.mapMarkerImageMeta.map.image.replace('clean.png', 'full.jpg'));
 
         try {
-            const image = Gm(this.mapMarkerImageMeta.map.image.replace('clean.png', 'full.png'));
+            const image = Gm(this.mapMarkerImageMeta.map.image.replace('clean.png', 'full.jpg'));
 
             if (this.rustplus.info === null) {
                 this.rustplus.log(Client.client.intlGet(null, 'warningCap'),
@@ -471,7 +471,7 @@ class Map {
                 }
             }
 
-            await this.gmWriteAsync(image, this.mapMarkerImageMeta.map.image.replace('clean.png', 'full.png'));
+            await this.gmWriteAsync(image, this.mapMarkerImageMeta.map.image.replace('clean.png', 'full.jpg'));
         }
         catch (error) {
             this.rustplus.log(Client.client.intlGet(null, 'warningCap'),
